@@ -8,13 +8,15 @@ class Movie {
 
     function __construct($_title, $_genre, $_releaseDate, $_vote){
         $this->title = $_title;
-        $this->genre = $_genre;
+        $this->genre = implode($_genre);
         $this->releaseDate = $_releaseDate;
-        $this->vote = $_vote
-    };
-};
+        $this->vote = $_vote;
+    }
 
-$oppenheimer = new Movie('Oppenheimer', 'Thriller', 2023, 5);
+}
+
+$oppenheimer = new Movie('Oppenheimer', ['Thriller - ', 'Horror'], 2023, 5);
+$theOthers = new Movie('The Others', ['Thriller'], 2001, 5);
 
 ?>
 
@@ -27,8 +29,20 @@ $oppenheimer = new Movie('Oppenheimer', 'Thriller', 2023, 5);
     <title>Object Oriented Programming</title>
 </head>
 <body>
-    <?php 
-        echo $oppenheimer->title
-    ?>
+    <ul>
+        <li>
+            <h3><?php echo $oppenheimer->title ?></h3>
+            <b><?php echo $oppenheimer->genre."<br>" ?></b>
+            <b><?php echo "Released on: ".$oppenheimer->releaseDate ?></b>
+            <p><?php echo "Vote: ".$oppenheimer->vote ?></p>
+        </li>
+        <li>
+            <h3><?php echo $theOthers->title ?></h3>
+            <b><?php echo $theOthers->genre."<br>" ?></b>
+            <b><?php echo "Released on: ".$theOthers->releaseDate ?></b>
+            <p><?php echo "Vote: ".$theOthers->vote ?></p>
+        </li>
+    </ul>
+    
 </body>
 </html>
