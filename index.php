@@ -4,19 +4,31 @@ class Movie {
     public $title;
     public $genre;
     public $releaseDate;
-    public $vote;
+    public $vote = 0;
 
-    function __construct($_title, $_genre, $_releaseDate, $_vote){
+    function __construct($_title, $_genre, $_releaseDate){
         $this->title = $_title;
-        $this->genre = implode($_genre);
+        $this->genre = implode(" - ", $_genre);
         $this->releaseDate = $_releaseDate;
+    }
+
+    function setVote($_vote){
         $this->vote = $_vote;
     }
 
+    function getVote(){
+        return $this->vote;
+    }
 }
 
-$oppenheimer = new Movie('Oppenheimer', ['Thriller - ', 'Horror'], 2023, 5);
-$theOthers = new Movie('The Others', ['Thriller'], 2001, 5);
+$oppenheimer = new Movie('Oppenheimer', ['Thriller'], 2023);
+$oppenheimer->setVote(5);
+
+$theOthers = new Movie('The Others', ['Thriller', 'Horror'], 2001);
+$theOthers->setVote(5);
+
+$schindler = new Movie("Schindler's List - La lista di Schindler", ['Guerra', 'Documentario'], 1993);
+$schindler->setVote(4);
 
 ?>
 
@@ -34,13 +46,19 @@ $theOthers = new Movie('The Others', ['Thriller'], 2001, 5);
             <h3><?php echo $oppenheimer->title ?></h3>
             <b><?php echo $oppenheimer->genre."<br>" ?></b>
             <b><?php echo "Released on: ".$oppenheimer->releaseDate ?></b>
-            <p><?php echo "Vote: ".$oppenheimer->vote ?></p>
+            <p><?php echo "Vote: ".$oppenheimer->getVote() ?></p>
         </li>
         <li>
             <h3><?php echo $theOthers->title ?></h3>
             <b><?php echo $theOthers->genre."<br>" ?></b>
             <b><?php echo "Released on: ".$theOthers->releaseDate ?></b>
-            <p><?php echo "Vote: ".$theOthers->vote ?></p>
+            <p><?php echo "Vote: ".$theOthers->getVote() ?></p>
+        </li>
+        <li>
+            <h3><?php echo $schindler->title ?></h3>
+            <b><?php echo $schindler->genre."<br>" ?></b>
+            <b><?php echo "Released on: ".$schindler->releaseDate ?></b>
+            <p><?php echo "Vote: ".$schindler->getVote() ?></p>
         </li>
     </ul>
     
