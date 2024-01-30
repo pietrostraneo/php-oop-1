@@ -7,11 +7,11 @@ class Movie {
     public $vote;
 
     function __construct($_title, $_genre, $_releaseDate, $_vote){
-        $this->title = $_title
-        $this->genre = $_genre
-        $this->releaseDate = $_releaseDate
+        $this->title = $_title;
+        $this->genre = $_genre;
+        $this->releaseDate = $_releaseDate;
         $this->vote = $_vote
-    }
+    };
 };
 
 $oppenheimer = new Movie('Oppenheimer', 'Thriller', 2023, 5);
